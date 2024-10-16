@@ -7,6 +7,22 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## conecoes com o banco de dados 
+
+## Neo4j
+    criacões de organizações : conectado com o banco de dados do neo4j
+    Localizar organizacões: conectado com o banco de dados do neo4j 
+    denunciar incidente e enviar notificacão para organizão
+    listar todos incidentes de forma publica 
+##  SQL-server
+   Criacões de usuarios: conectado com o banco de dados do sql-server
+   Olhar denuncias recentes 
+   
+   
+
+
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
