@@ -1,0 +1,42 @@
+@charset "UTF-8";
+.denuncias {
+  width: 100%;
+  margin: 80px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.denuncias-search {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08);
+}
+.denuncias-search input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.denuncias-search input::-moz-placeholder {
+  font-size: 18px;
+}
+.denuncias-search input::placeholder {
+  font-size: 18px;
+}
+.denuncias-search input:focus {
+  outline: none; /* Garante que o contorno padrão seja removido */
+}
+.denuncias-search-icon {
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 7px;
+}
+.denuncias-denun {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}/*# sourceMappingURL=Denuncias.css.map */
