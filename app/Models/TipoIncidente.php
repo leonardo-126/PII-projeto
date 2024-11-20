@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 use Vinelab\NeoEloquent\Eloquent\Model as NeoEloquent;
-use Vinelab\NeoEloquent\Eloquent\Relations\HasMany;
+
 
 class TipoIncidente extends NeoEloquent
 {
@@ -16,9 +16,9 @@ class TipoIncidente extends NeoEloquent
         'Tipo_incidente_id',  
         'descricao',  
     ];  
-    public function incidentes():HasMany
+    public function incidentes()
     {  
-        return $this->hasMany(Incidente::class);  
+        return $this->belongsTo(Incidente::class,'tipo_incidente_id');  
     } 
   
 }

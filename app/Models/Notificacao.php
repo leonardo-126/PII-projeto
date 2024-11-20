@@ -18,4 +18,6 @@ class Notificacao extends NeoEloquent
     {
         return $this->belongsTo(Incidente::class,'Incidente_id','Incidente_id');
     }
+
+ 
 }

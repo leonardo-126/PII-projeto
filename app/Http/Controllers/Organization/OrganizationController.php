@@ -16,7 +16,8 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        //
+        $organizacoes = Organizacao::with(['telefones', 'enderecos'])->get();
+        return response()->json($organizacoes);
     }
 
     /**
@@ -87,11 +88,58 @@ class OrganizationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Organizacao $organizacao)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        // Validação dos dados
+        $data = $request->validate([
+            'Nome_departamento' => 'required|string|max:255',
+            'Nome_organizacao' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255'
+        ]);
 
+        $data_telefone = $request->validate([
+            'numeroTelefone' => 'required|string|max:45'
+        ]);
+
+        $data_endereco = $request->validate([
+            'cidade'=> 'required|string|max:130',
+            'estado'=> 'required|string|max:120',
+            'numero'=> 'required|string|max:5',
+            'cep'=> 'required|string|max:9',
+            'rua'=> 'required|string|max:255',
+        ]);
+
+        try {
+            // Buscar a organização pelo ID
+            $organizacao = Organizacao::findOrFail($id);
+
+            // Atualizar os dados da organização
+            $organizacao->update($data);
+
+            // Atualizar os telefones associados
+            if ($organizacao->telefones()->exists()) {
+                $telefone = $organizacao->telefones()->first();
+                $telefone->update($data_telefone);
+            } else {
+                // Se não existir, cria um novo telefone
+                $organizacao->telefones()->create($data_telefone);
+            }
+
+            // Atualizar os endereços associados
+            if ($organizacao->enderecos()->exists()) {
+                $endereco = $organizacao->enderecos()->first();
+                $endereco->update($data_endereco);
+            } else {
+                // Se não existir, cria um novo endereço
+                $organizacao->enderecos()->create($data_endereco);
+            }
+
+            return redirect()->route('organizacoes.index')->with('success', 'Organização atualizada com sucesso!');
+        } catch (\Exception $e) {
+            // Em caso de erro, retorna com a mensagem de erro
+            return redirect()->back()->with('error', 'Erro ao atualizar organização: ' . $e->getMessage());
+        }
+    }
     /**
      * Remove the specified resource from storage.
      */
