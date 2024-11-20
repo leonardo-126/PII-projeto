@@ -13,7 +13,7 @@ Route::post('register', [AuthenticationController::class, 'register'])->name('re
 Route::post('login', [AuthenticationController::class, 'login'])->name('login.isso');
 
 // grupo de rota destinada a organizações 
-Route::resource('organizacao', OrganizationController::class)->only(['index','store'])->missing(function(){
+Route::resource('organizacao', OrganizationController::class)->only(['index','store','update','destroy'])->missing(function(){
     return redirect()->route('organizacao.index');
 
 });
