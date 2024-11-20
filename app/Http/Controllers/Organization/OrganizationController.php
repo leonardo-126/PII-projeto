@@ -30,11 +30,11 @@ class OrganizationController extends Controller
             'Nome_organizacao' => 'required|string|max:255',  
             'email' => 'nullable|email|max:255'
         ]);  
-    
+
         $data_telefone = $request->validate([
             'numeroTelefone' => 'required|string|max:45'
         ]);
-    
+
         $data_endereco = $request->validate([
             'cidade'=> 'required|string|max:130',  
             'estado'=> 'required|string|max:120',  
@@ -42,26 +42,31 @@ class OrganizationController extends Controller
             'cep'=> 'required|string|max:9',  
             'rua'=> 'required|string|max:255',  
         ]);
-    
+
         try {
             // Criação da organização
             $organizacao = Organizacao::create($data);  
-    
+      
+
             // Criação do telefone associado
-            $telefone = new TelefoneOrganizacao($data_telefone); // Criação do objeto telefone
-            $organizacao->telefones()->save($telefone); // Usando save ao invés de create
-    
+            $telefone = new TelefoneOrganizacao($data_telefone); 
+            $organizacao->telefones()->save($telefone); // Associando o telefone à organização
+
             // Criação do endereço associado
-            $enderecos = new EnderecoOrganizacao($data_endereco); // Criação do objeto endereço
-            $organizacao->enderecos()->save($enderecos); // Usando save ao invés de create
-    
+            $endereco = new EnderecoOrganizacao($data_endereco); 
+            $organizacao->enderecos()->save($endereco); // Associando o endereço à organização
+
+            // Criando o relacionamento no Neo4j:
+            
+            // Criação explícita do relacionamento entre Organizacao e TelefoneOrganizacao
+          
             return response()->json([
                 'insercao' => "Inserção realizada com sucesso",   
                 'organizacao' => $organizacao,  
                 'telefone' => $telefone,
-                'endereco' => $enderecos
+                'endereco' => $endereco
             ], 200);
-    
+
         } catch (\Exception $e) {
             // Retorno em caso de erro
             return response()->json([
@@ -69,6 +74,7 @@ class OrganizationController extends Controller
             ], 500);
         }
     }
+
     
     /**
      * Display the specified resource.

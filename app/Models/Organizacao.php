@@ -24,12 +24,12 @@ class Organizacao extends NeoEloquent
     
         public function enderecos()
         {
-            return $this->hasOne(EnderecoOrganizacao::class, 'organizacao_id');  // Definindo a chave estrangeira correta
+            return $this->hasOne(EnderecoOrganizacao::class, 'TEM_ENDERECO');  // Definindo a chave estrangeira correta
         }
     
         public function telefones()
         {  
-            return $this->hasMany(TelefoneOrganizacao::class);   
+            return $this->hasMany(TelefoneOrganizacao::class,'TEM_TELEFONE');   
         }
     
     
