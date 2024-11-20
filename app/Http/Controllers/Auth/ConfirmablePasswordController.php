@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Providers\RouteServiceProvider;
+=======
+>>>>>>> teste
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +40,10 @@ class ConfirmablePasswordController extends Controller
 
         $request->session()->put('auth.password_confirmed_at', time());
 
+<<<<<<< HEAD
         return redirect()->intended(RouteServiceProvider::HOME);
+=======
+        return redirect()->intended(route('dashboard', absolute: false));
+>>>>>>> teste
     }
 }

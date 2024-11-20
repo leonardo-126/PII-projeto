@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+=======
+import InputError from '@/Components/InputError';
+import PrimaryButton from '@/Components/PrimaryButton';
+import TextInput from '@/Components/TextInput';
+import GuestLayout from '@/Layouts/GuestLayout';
+>>>>>>> teste
 import { Head, useForm } from '@inertiajs/react';
 
 export default function ForgotPassword({ status }) {
@@ -20,11 +27,24 @@ export default function ForgotPassword({ status }) {
             <Head title="Forgot Password" />
 
             <div className="mb-4 text-sm text-gray-600">
+<<<<<<< HEAD
                 Forgot your password? No problem. Just let us know your email address and we will email you a password
                 reset link that will allow you to choose a new one.
             </div>
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+=======
+                Forgot your password? No problem. Just let us know your email
+                address and we will email you a password reset link that will
+                allow you to choose a new one.
+            </div>
+
+            {status && (
+                <div className="mb-4 text-sm font-medium text-green-600">
+                    {status}
+                </div>
+            )}
+>>>>>>> teste
 
             <form onSubmit={submit}>
                 <TextInput
@@ -39,7 +59,11 @@ export default function ForgotPassword({ status }) {
 
                 <InputError message={errors.email} className="mt-2" />
 
+<<<<<<< HEAD
                 <div className="flex items-center justify-end mt-4">
+=======
+                <div className="mt-4 flex items-center justify-end">
+>>>>>>> teste
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Email Password Reset Link
                     </PrimaryButton>

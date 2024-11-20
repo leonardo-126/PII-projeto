@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import { useEffect } from 'react';
 import GuestLayout from '@/Layouts/GuestLayout';
+=======
+>>>>>>> teste
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+<<<<<<< HEAD
+=======
+import GuestLayout from '@/Layouts/GuestLayout';
+>>>>>>> teste
 import { Head, useForm } from '@inertiajs/react';
 
 export default function ResetPassword({ token, email }) {
@@ -14,6 +21,7 @@ export default function ResetPassword({ token, email }) {
         password_confirmation: '',
     });
 
+<<<<<<< HEAD
     useEffect(() => {
         return () => {
             reset('password', 'password_confirmation');
@@ -24,6 +32,14 @@ export default function ResetPassword({ token, email }) {
         e.preventDefault();
 
         post(route('password.store'));
+=======
+    const submit = (e) => {
+        e.preventDefault();
+
+        post(route('password.store'), {
+            onFinish: () => reset('password', 'password_confirmation'),
+        });
+>>>>>>> teste
     };
 
     return (
@@ -65,14 +81,26 @@ export default function ResetPassword({ token, email }) {
                 </div>
 
                 <div className="mt-4">
+<<<<<<< HEAD
                     <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
 
                     <TextInput
                         type="password"
+=======
+                    <InputLabel
+                        htmlFor="password_confirmation"
+                        value="Confirm Password"
+                    />
+
+                    <TextInput
+                        type="password"
+                        id="password_confirmation"
+>>>>>>> teste
                         name="password_confirmation"
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
+<<<<<<< HEAD
                         onChange={(e) => setData('password_confirmation', e.target.value)}
                     />
 
@@ -80,6 +108,20 @@ export default function ResetPassword({ token, email }) {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
+=======
+                        onChange={(e) =>
+                            setData('password_confirmation', e.target.value)
+                        }
+                    />
+
+                    <InputError
+                        message={errors.password_confirmation}
+                        className="mt-2"
+                    />
+                </div>
+
+                <div className="mt-4 flex items-center justify-end">
+>>>>>>> teste
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Reset Password
                     </PrimaryButton>

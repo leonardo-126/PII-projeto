@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+<<<<<<< HEAD
 use App\Providers\RouteServiceProvider;
+=======
+>>>>>>> teste
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -35,13 +38,19 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+<<<<<<< HEAD
             'type' => 'required|string|max:255',
+=======
+>>>>>>> teste
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+<<<<<<< HEAD
             'type' => $request->type,
+=======
+>>>>>>> teste
             'password' => Hash::make($request->password),
         ]);
 
@@ -49,6 +58,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+<<<<<<< HEAD
         return redirect(RouteServiceProvider::HOME);
+=======
+        return redirect(route('dashboard', absolute: false));
+>>>>>>> teste
     }
 }

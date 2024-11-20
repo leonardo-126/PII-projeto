@@ -15,7 +15,12 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'default' => env('DB_CONNECTION', 'mysql'),
+=======
+    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => 'neo4j',
+>>>>>>> teste
 
     /*
     |--------------------------------------------------------------------------
@@ -92,6 +97,18 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
+    
+    // outras conexões...  
+
+    'neo4j' => [  
+        'driver'   => 'neo4j',  
+        'host'     => env('NEO4J_HOST', 'localhost'),  
+        'port'     => env('NEO4J_PORT'),  
+        'username' => env('NEO4J_USERNAME'),  
+        'password' => env('NEO4J_PASSWORD'),  
+        
+    ],  
+
 
     ],
 

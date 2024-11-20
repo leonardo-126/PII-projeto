@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import { useEffect } from 'react';
 import GuestLayout from '@/Layouts/GuestLayout';
+=======
+>>>>>>> teste
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+<<<<<<< HEAD
+=======
+import GuestLayout from '@/Layouts/GuestLayout';
+>>>>>>> teste
 import { Head, useForm } from '@inertiajs/react';
 
 export default function ConfirmPassword() {
@@ -11,6 +18,7 @@ export default function ConfirmPassword() {
         password: '',
     });
 
+<<<<<<< HEAD
     useEffect(() => {
         return () => {
             reset('password');
@@ -21,6 +29,14 @@ export default function ConfirmPassword() {
         e.preventDefault();
 
         post(route('password.confirm'));
+=======
+    const submit = (e) => {
+        e.preventDefault();
+
+        post(route('password.confirm'), {
+            onFinish: () => reset('password'),
+        });
+>>>>>>> teste
     };
 
     return (
@@ -28,7 +44,12 @@ export default function ConfirmPassword() {
             <Head title="Confirm Password" />
 
             <div className="mb-4 text-sm text-gray-600">
+<<<<<<< HEAD
                 This is a secure area of the application. Please confirm your password before continuing.
+=======
+                This is a secure area of the application. Please confirm your
+                password before continuing.
+>>>>>>> teste
             </div>
 
             <form onSubmit={submit}>
@@ -48,7 +69,11 @@ export default function ConfirmPassword() {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
+<<<<<<< HEAD
                 <div className="flex items-center justify-end mt-4">
+=======
+                <div className="mt-4 flex items-center justify-end">
+>>>>>>> teste
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Confirm
                     </PrimaryButton>
