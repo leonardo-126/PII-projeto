@@ -143,8 +143,29 @@ class OrganizationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Organizacao $organizacao)
+    public function destroy($id)
     {
-        //
+        try {
+            // Buscar a organização pelo ID
+            $organizacao = Organizacao::findOrFail($id);
+            
+            // Remover os telefones associados (relacionamento)
+            foreach ($organizacao->telefones as $telefone) {
+                $telefone->delete();
+            }
+            
+            // Remover os endereços associados (relacionamento)
+            foreach ($organizacao->enderecos as $endereco) {
+                $endereco->delete();
+            }
+            
+            // Deletar a organização
+            $organizacao->delete();
+            
+            return redirect()->route('organizacoes.index')->with('success', 'Organização excluída com sucesso!');
+        } catch (\Exception $e) {
+            // Em caso de erro, retorna com a mensagem de erro
+            return redirect()->route('organizacoes.index')->with('error', 'Erro ao excluir organização: ' . $e->getMessage());
+        }
     }
 }
