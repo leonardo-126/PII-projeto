@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 import { useEffect } from 'react';
 import Checkbox from '@/Components/Checkbox';
 import GuestLayoutMin from '@/Layouts/GuestLayoutMin';
-=======
-import Checkbox from '@/Components/Checkbox';
->>>>>>> teste
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-<<<<<<< HEAD
-=======
-import GuestLayout from '@/Layouts/GuestLayout';
->>>>>>> teste
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {
@@ -22,7 +14,6 @@ export default function Login({ status, canResetPassword }) {
         remember: false,
     });
 
-<<<<<<< HEAD
     useEffect(() => {
         return () => {
             reset('password');
@@ -40,25 +31,6 @@ export default function Login({ status, canResetPassword }) {
             <Head title="Log in" />
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
-=======
-    const submit = (e) => {
-        e.preventDefault();
-
-        post(route('login'), {
-            onFinish: () => reset('password'),
-        });
-    };
-
-    return (
-        <GuestLayout>
-            <Head title="Log in" />
-
-            {status && (
-                <div className="mb-4 text-sm font-medium text-green-600">
-                    {status}
-                </div>
-            )}
->>>>>>> teste
 
             <form onSubmit={submit}>
                 <div>
@@ -79,11 +51,7 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="mt-4">
-<<<<<<< HEAD
                     <InputLabel htmlFor="password" value="Senha" />
-=======
-                    <InputLabel htmlFor="password" value="Password" />
->>>>>>> teste
 
                     <TextInput
                         id="password"
@@ -98,16 +66,11 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-<<<<<<< HEAD
                 <div className="block mt-4">
-=======
-                <div className="mt-4 block">
->>>>>>> teste
                     <label className="flex items-center">
                         <Checkbox
                             name="remember"
                             checked={data.remember}
-<<<<<<< HEAD
                             onChange={(e) => setData('remember', e.target.checked)}
                         />
                         <span className="ms-2 text-sm text-gray-600">Lembre de mim</span>
@@ -121,41 +84,14 @@ export default function Login({ status, canResetPassword }) {
                             className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                         Esqueceu sua senha?
-=======
-                            onChange={(e) =>
-                                setData('remember', e.target.checked)
-                            }
-                        />
-                        <span className="ms-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
-                    </label>
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                            Forgot your password?
->>>>>>> teste
                         </Link>
                     )}
 
                     <PrimaryButton className="ms-4" disabled={processing}>
-<<<<<<< HEAD
                         Entrar
                     </PrimaryButton>
                 </div>
             </form>
         </GuestLayoutMin>
-=======
-                        Log in
-                    </PrimaryButton>
-                </div>
-            </form>
-        </GuestLayout>
->>>>>>> teste
     );
 }
