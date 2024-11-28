@@ -56,7 +56,25 @@ export default function DenunciarIncidente({auth}) {
         "TI",
         "Marketing",
         "Compras",
-    ]);
+    ]); 
+    // Função para buscar os dados da API
+    useEffect(() => {
+        fetch('/api/organizacao')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar dados da API');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                 // Filtra apenas os nomes das organizações
+                 const nomesOrganizacoes = data.map((org) => org.Nome_departamento);
+                 setDepartamentos(nomesOrganizacoes);
+            })
+            .catch((error) => {
+                console.error('Erro:', error);
+            });
+    }, []);
 
     const [busca, setBusca] = useState(""); // Termo de busca
     const [departamentoSelecionado, setDepartamentoSelecionado] = useState(""); // Seleção do usuário

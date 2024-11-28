@@ -21,3 +21,5 @@ Route::resource('organizacao', OrganizationController::class)->only(['index','st
 Route::resource('notificacao', NotificacaoController::class)->only(['index','store','update', 'destroy'])->missing(function(){
     return redirect()->route('notificacao.index');
 });
+
+Route::get('/api/denuncias', [IncidenteController::class, 'getDenuncias']);
