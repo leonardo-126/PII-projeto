@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthenticationController;
+use App\Http\Controllers\Notificacao\NotificacaoController;
 use App\Http\Controllers\Organization\OrganizationController;
 
 Route::get('/user', function (Request $request) {
@@ -16,4 +17,7 @@ Route::post('login', [AuthenticationController::class, 'login'])->name('login.is
 Route::resource('organizacao', OrganizationController::class)->only(['index','store','update','destroy'])->missing(function(){
     return redirect()->route('organizacao.index');
 
+});
+Route::resource('notificacao', NotificacaoController::class)->only(['index','store','update', 'destroy'])->missing(function(){
+    return redirect()->route('notificacao.index');
 });

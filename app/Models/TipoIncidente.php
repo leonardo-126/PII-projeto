@@ -9,6 +9,7 @@ use Vinelab\NeoEloquent\Eloquent\Model as NeoEloquent;
 class TipoIncidente extends NeoEloquent
 {
     //
+    protected $connection = 'neo4j';
     protected $label = 'TipoIncidente';  
 
     protected $fillable = [  
