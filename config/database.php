@@ -16,8 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
-    'default' => 'neo4j',
+    'default' => 'sqlite',
 
     /*
     |--------------------------------------------------------------------------

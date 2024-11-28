@@ -7,6 +7,8 @@ use Vinelab\NeoEloquent\Eloquent\Model as NeoEloquent;
 class EnderecoIncidente extends NeoEloquent
 {
     //
+    protected $connection = 'neo4j';
+
     protected $label = "EnderecoIncidente";
     protected $fillable = [  
         'cidade',  

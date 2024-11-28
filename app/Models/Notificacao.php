@@ -8,6 +8,8 @@ use Vinelab\NeoEloquent\Eloquent\Model as NeoEloquent;
 
 class Notificacao extends NeoEloquent
 {
+    protected $connection = 'neo4j';
+
     protected $label = 'Notificacao';  
 
     protected $fillable = [  
