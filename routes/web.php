@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterOrganization;
 use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Foundation\Application;
@@ -15,8 +16,9 @@ Route::middleware(['auth:users'])->group(function(){
 });
 
 Route::middleware(['auth:organizacao'])->group(function(){
-//
 });;
+Route::get('/RegisterOrganizacao',[RegisterOrganization::class,'create'])->name('register.org');
+route::post('/registerorganizacao/store',[RegisterOrganization::class,'store'])->name('register.org.store');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -26,9 +28,7 @@ Route::get('/LoginOrganizacao', function () { //teste
     return Inertia::render('Auth/LoginOrganizacao');
 })->name('LoginOrganizacao');
 
-Route::get('/RegisterOrganizacao', function () { //teste
-    return Inertia::render('Auth/RegisterOrganizacao');
-})->name('RegisterOrganizacao');
+
 
 Route::get('/DenunciarIncidente', function () { //teste
     return Inertia::render('DenunciarIncidente');

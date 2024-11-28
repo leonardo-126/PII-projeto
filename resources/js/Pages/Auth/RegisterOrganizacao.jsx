@@ -11,7 +11,7 @@ export default function RegisterOrganizacao() {
         name: '',
         email: '',
         password: '',
-        type: 'Policial',
+        type: '',
         password_confirmation: '',
         telefone: '',
         cidade: '',
@@ -23,7 +23,7 @@ export default function RegisterOrganizacao() {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('register'));
+        post(route('register.org.store'));
     };
 
     return (
@@ -103,9 +103,9 @@ export default function RegisterOrganizacao() {
                                 onChange={(e) => setData('type', e.target.value)}
                                 required
                             >
-                                <option value="Policial">Policial</option>
-                                <option value="bombeiro">Bombeiro</option>
-                                <option value="Assistencia">Assistencia</option>
+                                <option value={0}>Policial</option>
+                                <option value={1}>Bombeiro</option>
+                                <option value={2}>Assistencia</option>
                             </select>
                             <InputError message={errors.type} className="mt-2" />
                         </div>
