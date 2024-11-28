@@ -60,7 +60,7 @@ class RegisterOrganization extends Controller
             'organizacao_id'=>$organization->id
         ]);
 
-        return response()->json(['cadsatro com sucesso']);
+        return redirect()->route('login.org');
   
     }
     public function update(Request $request, OrganizacaoSQL $organizacao) {  

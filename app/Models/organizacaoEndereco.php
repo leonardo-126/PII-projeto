@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class organizacaoEndereco extends Model
 {
@@ -21,5 +22,9 @@ class organizacaoEndereco extends Model
     public function fromDateTime($value)
     {
         return Carbon::parse(parent::fromDateTime($value))->format('Y-d-m H:i:s');
+    }
+    public function organizacao():BelongsTo
+    {
+        return $this->belongsTo(OrganizacaoSQL::class);
     }
 }
