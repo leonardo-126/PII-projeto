@@ -73,10 +73,10 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
-        'organizacao'=>[
-            'driver'=>'eloquent',
-            'model'=> APP\Models\OrganizacaoSQL::class,
-        ]
+       'organizacao' => [  
+            'driver' => 'eloquent',  
+            'model' => App\Models\OrganizacaoSQL::class, // Corrigido para 'App' com "A" maiúsculo  
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

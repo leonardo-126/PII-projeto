@@ -16,9 +16,13 @@ Route::middleware(['auth:users'])->group(function(){
 });
 
 Route::middleware(['auth:organizacao'])->group(function(){
+    Route::put('/registerorganizacao/update/{organizacao}',[RegisterOrganization::class,'update'])->name('register.org.update');
+    Route::get('/dashboardOrganizacao', function () {
+        return Inertia::render('DashboardOrganizacao');
+        })->name('dashboard.organizacao');
 });;
 Route::get('/RegisterOrganizacao',[RegisterOrganization::class,'create'])->name('register.org');
-route::post('/registerorganizacao/store',[RegisterOrganization::class,'store'])->name('register.org.store');
+Route::post('/registerorganizacao/store',[RegisterOrganization::class,'store'])->name('register.org.store');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -33,13 +37,8 @@ Route::get('/LoginOrganizacao', function () { //teste
 Route::get('/DenunciarIncidente', function () { //teste
     return Inertia::render('DenunciarIncidente');
 })->name('DenunciarIncidente');
-Route::get('/dashboard', function () {
-return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboardOrganizacao', function () {
-return Inertia::render('DashboardOrganizacao');
-})->middleware(['auth', 'verified'])->name('dashboardOrganizacao');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

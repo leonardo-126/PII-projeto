@@ -29,26 +29,46 @@ class AuthenticationController extends Controller
           
     }
   
-    public function login(Request $request)
-    {
-        $credentials = [
-            'email'    => $request->email,
-            'password' => $request->password
-        ];
-  
-        if (Auth::attempt($credentials)) 
-        {
+    public function login(Request $request)  
+    {  
+        // Validação dos dados de entrada  
+        $request->validate([  
+            'email' => 'required|email',  
+            'password' => 'required|string',  
+        ]);  
+    
+        $credentials = $request->only('email', 'password');  
+        //dd($credentials);
+    
+
+        // Tentar autenticar como usuário padrão  
+        if (auth()->guard('web')->attempt($credentials)) {  
             $token = Auth::user()->createToken('passportToken')->accessToken;  
              
-            return response()->json([
-                'user' => Auth::user(), 
-                'token' => $token
-            ], 200);
-        }
-  
-        return response()->json([
-            'error' => 'Unauthorised'
-        ], 401);
-  
+            return response()->json([  
+                'user' => Auth::user(),   
+                'token' => $token  
+            ], 200);  
+        }  
+        
+        // Tentar autenticar como organização  
+   
+    
+        return response()->json([  
+            'error' => 'Unauthorized'  
+        ], 401);  
     }
+    public function loginOrganizacao(Request $request)  
+    {  
+        // Validação dos dados...  
+        $credentials = $request->only('email', 'password');  
+
+        if (Auth::guard('organizacao')->attempt($credentials)) {  
+            // Lógica similar para organizações  
+            $organizacao = Auth::guard('organizacao')->user();  
+            return redirect()->route('dashboard.organizacao');  
+        }  
+
+        return response()->json(['error' => 'Unauthorized'], 401);  
+    }  
 }

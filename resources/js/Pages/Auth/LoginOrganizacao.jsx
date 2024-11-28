@@ -23,7 +23,7 @@ export default function LoginOrganizacao({ status, canResetPassword }) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('login'));
+        post(route('login.org'));
     };
 
     return (
