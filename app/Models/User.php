@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Carbon\Carbon;
  
 class User extends Authenticatable
 {
@@ -22,8 +24,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type'
         
     ];
+
+    public function fromDateTime($value)  
+    {  
+        return Carbon::parse(parent::fromDateTime($value))->format('Y-d-m H:i:s');  
+    }  
+
+    
     public function telefones():HasMany
     {
         return $this->hasMany(Telefoneusers::class);
@@ -55,4 +65,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    protected function type(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => ["user", "org", "manager"][$value] ?? 'unknown',
+        );
+    }
+    
+
 }

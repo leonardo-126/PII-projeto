@@ -11,7 +11,7 @@ export default function Register() {
         name: '',
         email: '',
         password: '',
-        type: 'Civil',
+        type: '',
         password_confirmation: '',
         telefone: '',
         cidade: '',
@@ -23,7 +23,7 @@ export default function Register() {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('register'));
+        post(route('register.isso'));
     };
 
     return (
@@ -103,9 +103,9 @@ export default function Register() {
                                 onChange={(e) => setData('type', e.target.value)}
                                 required
                             >
-                                <option value="Civil">Civil</option>
-                                <option value="bombeiro">Bombeiro</option>
-                                <option value="policial">Policial</option>
+                                <option value={0}>Civil</option>
+                                <option value={1}>Org</option>
+                            
                             </select>
                             <InputError message={errors.type} className="mt-2" />
                         </div>

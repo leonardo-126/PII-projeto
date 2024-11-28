@@ -22,8 +22,16 @@ export default function Login({ status, canResetPassword }) {
 
     const submit = (e) => {
         e.preventDefault();
-
-        post(route('login.isso'));
+    
+        // Captura o token CSRF do meta tag no HTML
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    
+        // Inclui o token CSRF no cabeçalho da requisição
+        post(route('login.isso'), {
+            headers: {
+                'X-CSRF-TOKEN': csrfToken, // Adiciona o token aqui
+            },
+        });
     };
 
     return (

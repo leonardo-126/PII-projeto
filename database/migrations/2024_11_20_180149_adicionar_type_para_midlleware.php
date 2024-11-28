@@ -9,10 +9,10 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   /* public function up(): void
+ public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('type');
+            $table->tinyInteger('type')->nullable();
         });
     }
 
@@ -21,5 +21,5 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
         });
-    }*/
+    }
 };
