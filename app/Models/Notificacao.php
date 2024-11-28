@@ -20,6 +20,9 @@ class Notificacao extends NeoEloquent
     {
         return $this->belongsTo(Incidente::class,'Incidente_id','Incidente_id');
     }
+    public function organizacao(){
+        return $this->hasMany(Organizacao::class,'ENVIADA_PARA');
+    }
 
  
 }

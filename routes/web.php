@@ -18,7 +18,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard.users');
     Route::get('/DenunciarIncidente', function () { //teste
-        dd(Auth::id());
+ 
         return Inertia::render('DenunciarIncidente',[
             'auth'=> Auth::id()
         ]);

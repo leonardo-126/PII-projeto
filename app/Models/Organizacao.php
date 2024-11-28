@@ -32,6 +32,9 @@ class Organizacao extends NeoEloquent
         {  
             return $this->hasMany(TelefoneOrganizacao::class,'TEM_TELEFONE');   
         }
+        public function notificacao(){
+            return $this->belongsTo(Notificacao::class);
+        }
     
     
 }
