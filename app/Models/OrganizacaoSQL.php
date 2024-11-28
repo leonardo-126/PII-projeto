@@ -1,37 +1,22 @@
 <?php
- 
+
 namespace App\Models;
- 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
- 
-class User extends Authenticatable
+
+class OrganizacaoSQL extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
- 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    use HasApiTokens, Notifiable;
+    protected $table = "organizacoes";
+
     protected $fillable = [
         'name',
         'email',
         'password',
         
     ];
-    public function telefones():HasMany
-    {
-        return $this->hasMany(Telefoneusers::class);
-    }
-    public function enderecos():HasMany
-    {
-        return $this->hasMany(EnderecosUsers::class);
-    }
  
     /**
      * The attributes that should be hidden for serialization.
@@ -55,4 +40,5 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
 }

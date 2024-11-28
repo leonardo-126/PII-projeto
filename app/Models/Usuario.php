@@ -13,7 +13,7 @@ class Usuario extends NeoEloquent
         'Tipo_usuario',
         'Usuario_id',
         'email',
-        'senha'
+
 
     ];
 

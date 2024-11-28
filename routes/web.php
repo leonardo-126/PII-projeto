@@ -10,6 +10,13 @@ Route::get('/', function () {
     $user = User::all();
     return Inertia::render('Dashboard');
 });
+Route::middleware(['auth:users'])->group(function(){
+
+});
+
+Route::middleware(['auth:organizacao'])->group(function(){
+//
+});;
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
