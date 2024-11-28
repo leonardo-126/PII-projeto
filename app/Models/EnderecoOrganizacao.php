@@ -7,7 +7,6 @@ class EnderecoOrganizacao extends NeoEloquent
 {
     // Definição do label
     protected $connection = 'neo4j';
-
     protected $label = "EnderecoOrganizacao";
 
     // Campos preenchíveis

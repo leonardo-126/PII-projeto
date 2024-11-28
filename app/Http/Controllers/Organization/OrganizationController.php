@@ -45,11 +45,11 @@ class OrganizationController extends Controller
         ]);
 
         try {
-            // Criação da organização
+     
             $organizacao = Organizacao::create($data);  
       
 
-            // Criação do telefone associado
+           
             $telefone = new TelefoneOrganizacao($data_telefone); 
             $organizacao->telefones()->save($telefone); // Associando o telefone à organização
 

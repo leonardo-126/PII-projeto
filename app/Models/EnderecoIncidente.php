@@ -8,7 +8,6 @@ class EnderecoIncidente extends NeoEloquent
 {
     //
     protected $connection = 'neo4j';
-
     protected $label = "EnderecoIncidente";
     protected $fillable = [  
         'cidade',  

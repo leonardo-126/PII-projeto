@@ -4,6 +4,7 @@ namespace App\Models;
  
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -21,8 +22,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'types',
+        
     ];
+    public function telefones():HasMany
+    {
+        return $this->hasMany(Telefoneusers::class);
+    }
+    public function enderecos():HasMany
+    {
+        return $this->hasMany(EnderecosUsers::class);
+    }
  
     /**
      * The attributes that should be hidden for serialization.

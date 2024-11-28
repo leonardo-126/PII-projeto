@@ -6,10 +6,8 @@ use Vinelab\NeoEloquent\Eloquent\Model as NeoEloquent;
 
 class Organizacao extends NeoEloquent  
 {  
-
-    protected $connection = 'neo4j';
-    
-    protected $label = 'Organizacao';  
+    protected $connection = 'neo4j'; 
+    protected $label = 'Organizacao'; 
 
     protected $fillable = [  
         'Nome_departamento',  
