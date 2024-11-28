@@ -61,8 +61,28 @@ const denunciasData = [
   
 
 export default function Denuncias() {
-    const [denunciasFilter, setDenunciasFilter] = useState(denunciasData)
+    const [denunciasFilter, setDenunciasFilter] = useState(denunciasData)//colocar um array
     const [searchTerm, setSearchTerm] = useState("");
+
+    //const [denunciasFilter, setDenunciasFilter] = useState([]);
+
+    useEffect(() => {
+        // Chamar a API
+        fetch("/api/denuncias")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar dados das denúncias");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                // Atualizar o estado com os dados recebidos
+                setDenunciasFilter(data);
+            })
+            .catch((error) => {
+                console.error("Erro ao buscar denúncias:", error);
+            });
+    }, []);
 
     const handleSearchChange = (e) => {
       const value = e.target.value;
