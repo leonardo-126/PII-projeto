@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Organization;
 use App\Http\Controllers\Controller;
 use App\Models\EnderecoOrganizacao;
 use App\Models\Organizacao;
+use App\Models\organizacaoEndereco;
+use App\Models\OrganizacaoSQL;
+use App\Models\OrganizacaoTelefone;
 use App\Models\TelefoneOrganizacao;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
@@ -45,11 +48,11 @@ class OrganizationController extends Controller
         ]);
 
         try {
-            // Criação da organização
+     
             $organizacao = Organizacao::create($data);  
       
 
-            // Criação do telefone associado
+           
             $telefone = new TelefoneOrganizacao($data_telefone); 
             $organizacao->telefones()->save($telefone); // Associando o telefone à organização
 
@@ -83,6 +86,32 @@ class OrganizationController extends Controller
     public function show(Organizacao $organizacao)
     {
         //
+    }
+    public function organizationJson(){
+        $organizacoes = OrganizacaoSQL::all();
+
+        $organizacaoList=[];
+
+        foreach($organizacoes as $organizacao){
+            //telefone
+            $telefone= OrganizacaoTelefone::where('organizacao_id',$organizacao->id)->value('numeroTelefone');
+            //endereco
+            $enderecos = organizacaoEndereco::where('organizacao_id', $organizacao->id)->get();
+            foreach($enderecos as $endereco){
+
+                $organizacaoList[]=[
+                    'nome'=>$organizacao->name,
+                    'telefone'=>$telefone,
+                    'cidade'=>$endereco->cidade,  
+                    'estado'=>$endereco->estado,  
+                    'numero'=>$endereco->numero,  
+                    'cep'=>$endereco->cep,  
+                    'rua'=>$endereco->rua,  
+                ];
+            }
+         
+        }
+        return response()->json(compact('organizacaoList'));
     }
 
     /**

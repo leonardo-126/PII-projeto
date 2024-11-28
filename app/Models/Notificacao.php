@@ -8,6 +8,8 @@ use Vinelab\NeoEloquent\Eloquent\Model as NeoEloquent;
 
 class Notificacao extends NeoEloquent
 {
+    protected $connection = 'neo4j';
+
     protected $label = 'Notificacao';  
 
     protected $fillable = [  
@@ -17,6 +19,9 @@ class Notificacao extends NeoEloquent
     public function incidente()
     {
         return $this->belongsTo(Incidente::class,'Incidente_id','Incidente_id');
+    }
+    public function organizacao(){
+        return $this->hasMany(Organizacao::class,'ENVIADA_PARA');
     }
 
  

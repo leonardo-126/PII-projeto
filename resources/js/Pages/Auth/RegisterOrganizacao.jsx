@@ -6,16 +6,12 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Register() {
+export default function RegisterOrganizacao() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
         password: '',
-<<<<<<< HEAD
-        type: 'Civil',
-=======
         type: '',
->>>>>>> teste
         password_confirmation: '',
         telefone: '',
         cidade: '',
@@ -27,11 +23,7 @@ export default function Register() {
 
     const submit = (e) => {
         e.preventDefault();
-<<<<<<< HEAD
-        post(route('register'));
-=======
-        post(route('register.isso'));
->>>>>>> teste
+        post(route('register.org.store'));
     };
 
     return (
@@ -42,7 +34,7 @@ export default function Register() {
                 <div className="flex flex-col lg:flex-row lg:gap-x-8 gap-y-6 items-start">
                     <div className="flex flex-col gap-y-4 w-full lg:w-1/2">
                         <div>
-                            <InputLabel htmlFor="name" value="Nome" />
+                            <InputLabel htmlFor="name" value="Nome da Organização" />
                             <TextInput
                                 id="name"
                                 name="name"
@@ -102,7 +94,7 @@ export default function Register() {
                         </div>
 
                         <div>
-                            <InputLabel htmlFor="type" value="Selecionar tipo de usuario" />
+                            <InputLabel htmlFor="type" value="Selecionar tipo de Organização" />
                             <select
                                 id="type"
                                 name="type"
@@ -111,15 +103,9 @@ export default function Register() {
                                 onChange={(e) => setData('type', e.target.value)}
                                 required
                             >
-<<<<<<< HEAD
-                                <option value="Civil">Civil</option>
-                                <option value="bombeiro">Bombeiro</option>
-                                <option value="policial">Policial</option>
-=======
-                                <option value={0}>Civil</option>
-                                <option value={1}>Org</option>
-                            
->>>>>>> teste
+                                <option value={0}>Policial</option>
+                                <option value={1}>Bombeiro</option>
+                                <option value={2}>Assistencia</option>
                             </select>
                             <InputError message={errors.type} className="mt-2" />
                         </div>

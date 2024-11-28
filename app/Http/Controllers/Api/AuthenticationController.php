@@ -6,49 +6,59 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+
+use Laravel\Passport\HasApiTokens;
   
   
 class AuthenticationController extends Controller
 {
     public function register(Request $request)
     {
+       // dd('aaaa');
         $formData = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
+            'type'=> $request->type
         ];
+      //  dd($formData);
   
         $formData['password'] = bcrypt($request->password);
   
-        $user = User::create($formData);        
+       User::create($formData);        
   
-        return response()->json([ 
-            'user' => $user, 
-            'token' => $user->createToken('passportToken')->accessToken
-        ], 200);
-          
+        return redirect()->route('login');
     }
-  
-    public function login(Request $request)
-    {
-        $credentials = [
-            'email'    => $request->email,
-            'password' => $request->password
-        ];
-  
-        if (Auth::attempt($credentials)) 
+
+    
+    public function login(Request $request)  
+{  
+   $credentials= $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|string',
+    ]);
+
+    // Verifique as credenciais do usuário
+    if(auth()->attempt($credentials))
         {
-            $token = Auth::user()->createToken('passportToken')->accessToken;  
-             
-            return response()->json([
-                'user' => Auth::user(), 
-                'token' => $token
-            ], 200);
+            if (auth()->user()->type == 'user') {
+                return redirect()->route('dashboard.users');
+            }else if (auth()->user()->type == 'org') {
+                return redirect()->route('dashboard.organizacao');
+            }else{
+                return redirect()->route('home');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Email-Address And Password Are Wrong.');
         }
-  
-        return response()->json([
-            'error' => 'Unauthorised'
-        ], 401);
-  
     }
+
+    // Autenticar o usuário e redirecionar
+
 }
+
+
+
+
+  

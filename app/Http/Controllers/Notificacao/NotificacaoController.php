@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Notificacao;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notificacao;
+use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class NotificacaoController extends Controller
@@ -21,9 +23,17 @@ class NotificacaoController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::id();
+        // usuario que estiver cadastrado e authenticado 
+
+        $usuarioAuth = User::where('id', $user)->get();
+        // pegar a Informações do mesmo tipo endereço e telefone
         $data=$request->validate([
-            //
+            
         ]);
+        
+
+
     }
 
     /**

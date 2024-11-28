@@ -1,6 +1,7 @@
  <?php
 
 return [
+<<<<<<< HEAD
 
     /*
     |--------------------------------------------------------------------------
@@ -34,19 +35,25 @@ return [
     | Supported: "session"
     |
     */
+=======
+    'defaults' => [
+        'guard' => 'web', // Alterar para o guard padrão que você usa mais frequentemente
+        'passwords' => 'users',
+    ],
 
-'guards' => [
-      'web' => [
-          'driver' => 'session',
-          'provider' => 'users',
-      ],
- 
-      'api' => [
-          'driver' => 'passport',
-          'provider' => 'users',
-      ],
-  ],
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+>>>>>>> teste
 
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+
+<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -63,6 +70,13 @@ return [
     | Supported: "database", "eloquent"
     |
     */
+=======
+        'organizacao' => [
+            'driver' => 'session',
+            'provider' => 'organizacao',
+        ],
+    ],
+>>>>>>> teste
 
     'providers' => [
         'users' => [
@@ -70,12 +84,13 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'organizacao' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\OrganizacaoSQL::class,
+        ],
     ],
 
+<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -99,10 +114,22 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
+=======
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
             'expire' => 60,
-            'throttle' => 60,
+        ],
+
+        'organizacao' => [
+            'provider' => 'organizacao',
+            'table' => 'password_resets',
+>>>>>>> teste
+            'expire' => 60,
         ],
     ],
+<<<<<<< HEAD
 
     /*
     |--------------------------------------------------------------------------
@@ -117,4 +144,7 @@ return [
 
     'password_timeout' => 10800,
 
+=======
+>>>>>>> teste
 ];
+

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { forwardRef, useEffect, useRef } from 'react';
 
 export default forwardRef(function TextInput({ type = 'text', className = '', isFocused = false, ...props }, ref) {
@@ -11,22 +12,22 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
     }, []);
 =======
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+=======
+import { forwardRef, useEffect, useRef } from 'react';
+>>>>>>> teste
 
-export default forwardRef(function TextInput(
-    { type = 'text', className = '', isFocused = false, ...props },
-    ref,
-) {
-    const localRef = useRef(null);
-
-    useImperativeHandle(ref, () => ({
-        focus: () => localRef.current?.focus(),
-    }));
+export default forwardRef(function TextInput({ type = 'text', className = '', isFocused = false, ...props }, ref) {
+    const input = ref ? ref : useRef();
 
     useEffect(() => {
         if (isFocused) {
-            localRef.current?.focus();
+            input.current.focus();
         }
+<<<<<<< HEAD
     }, [isFocused]);
+>>>>>>> teste
+=======
+    }, []);
 >>>>>>> teste
 
     return (
@@ -34,6 +35,7 @@ export default forwardRef(function TextInput(
             {...props}
             type={type}
             className={
+<<<<<<< HEAD
 <<<<<<< HEAD
                 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ' +
                 className
@@ -44,6 +46,12 @@ export default forwardRef(function TextInput(
                 className
             }
             ref={localRef}
+>>>>>>> teste
+=======
+                'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ' +
+                className
+            }
+            ref={input}
 >>>>>>> teste
         />
     );

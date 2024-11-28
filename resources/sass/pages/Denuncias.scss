@@ -1,10 +1,18 @@
 .denuncias {
     width: 100%;
+<<<<<<< HEAD
     margin: 80px 0px;
+=======
+    margin: 30px 0px;
+>>>>>>> teste
     display: flex;
     align-items: center;
     flex-direction: column;
     row-gap: 30px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> teste
     &-search {
         width: 600px;
         display: flex;
@@ -12,24 +20,40 @@
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08);
+<<<<<<< HEAD
+=======
+
+>>>>>>> teste
         input {
             width: 100%;
             background-color: transparent;
             border: none;
             outline: none;
+<<<<<<< HEAD
+=======
+
+>>>>>>> teste
             &::placeholder {
                 font-size: 18px;
             }
 
             &:focus {
+<<<<<<< HEAD
                 outline: none; /* Garante que o contorno padrão seja removido */
             }
         }
+=======
+                outline: none;
+            }
+        }
+
+>>>>>>> teste
         &-icon {
             cursor: pointer;
             font-size: 18px;
             margin-right: 7px;
         }
+<<<<<<< HEAD
     } 
     &-denun {
         display: flex;
@@ -38,3 +62,77 @@
         row-gap: 20px;
     }
 }
+=======
+    }
+
+    &-denun {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    // Responsividade
+    @media (max-width: 1024px) {
+        margin: 60px 0px;
+
+        &-search {
+            width: 80%; // Adapta o tamanho para telas menores
+
+            input {
+                &::placeholder {
+                    font-size: 16px; // Ajuste no tamanho da fonte do placeholder
+                }
+            }
+        }
+
+        &-denun {
+            row-gap: 15px; // Reduz o espaço entre os elementos
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin: 50px 0px;
+
+        &-search {
+            width: 100%; // Ocupa todo o espaço disponível no container
+
+            input {
+                &::placeholder {
+                    font-size: 14px; // Diminui o tamanho da fonte do placeholder
+                }
+            }
+
+            &-icon {
+                font-size: 16px; // Reduz o tamanho do ícone
+            }
+        }
+
+        &-denun {
+            row-gap: 10px; // Diminui ainda mais o espaço entre os elementos
+        }
+    }
+
+    @media (max-width: 480px) {
+        margin: 40px 0px;
+
+        &-search {
+            width: 100%;
+            padding: 10px; // Adiciona padding para melhor espaçamento
+
+            input {
+                &::placeholder {
+                    font-size: 12px;
+                }
+            }
+
+            &-icon {
+                font-size: 14px; // Ajusta o tamanho do ícone para caber melhor
+            }
+        }
+
+        &-denun {
+            row-gap: 8px; // Ajusta o espaçamento para dispositivos muito pequenos
+        }
+    }
+}
+>>>>>>> teste

@@ -10,6 +10,8 @@ class TelefoneOrganizacao extends NeoEloquent
 {
     //
 
+
+    protected $connection = 'neo4j';
     protected $label = 'TelefoneOrganizacao';  
 
     protected $fillable = [  

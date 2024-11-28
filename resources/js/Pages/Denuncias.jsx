@@ -1,5 +1,9 @@
 import DenunciasCard from "@/Components/DenunciasCard";
+<<<<<<< HEAD
 import { useState } from "react"
+=======
+import { useEffect, useState } from "react"
+>>>>>>> teste
 import "../../sass/pages/Denuncias.scss"
 import { FaSearch } from "react-icons/fa";
 const denunciasData = [
@@ -61,9 +65,35 @@ const denunciasData = [
   
 
 export default function Denuncias() {
+<<<<<<< HEAD
     const [denunciasFilter, setDenunciasFilter] = useState(denunciasData)
     const [searchTerm, setSearchTerm] = useState("");
 
+=======
+    const [denunciasFilter, setDenunciasFilter] = useState(denunciasData)//colocar um array
+    const [searchTerm, setSearchTerm] = useState("");
+
+    //const [denunciasFilter, setDenunciasFilter] = useState([]);
+
+    useEffect(() => {
+        // Chamar a API
+        fetch("/api/denuncias")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar dados das denúncias");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                // Atualizar o estado com os dados recebidos
+                setDenunciasFilter(data);
+            })
+            .catch((error) => {
+                console.error("Erro ao buscar denúncias:", error);
+            });
+    }, []);
+
+>>>>>>> teste
     const handleSearchChange = (e) => {
       const value = e.target.value;
       setSearchTerm(value);
@@ -74,8 +104,18 @@ export default function Denuncias() {
       );
       setDenunciasFilter(filteredData);
   };
+<<<<<<< HEAD
     return (
         <section className="denuncias">
+=======
+  
+    return (
+        <section className="denuncias">
+            <a href="/RegisterOrganizacao" className="text-blue-500 underline hover:text-blue-700">
+              Sou uma organização e quero me cadastrar
+            </a>
+
+>>>>>>> teste
             <form action="" className="denuncias-search">
               <input 
               type="text" 

@@ -16,10 +16,15 @@ return [
     */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     'default' => env('DB_CONNECTION', 'mysql'),
 =======
     'default' => env('DB_CONNECTION', 'sqlite'),
     'default' => 'neo4j',
+>>>>>>> teste
+=======
+    //'default' => env('DB_CONNECTION'),
+    'default' => 'sqlite',
 >>>>>>> teste
 
     /*
@@ -40,6 +45,7 @@ return [
 
     'connections' => [
 
+<<<<<<< HEAD
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
@@ -82,6 +88,9 @@ return [
             'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
+=======
+     
+>>>>>>> teste
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
@@ -97,7 +106,7 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
-    
+     
     // outras conexões...  
 
     'neo4j' => [  

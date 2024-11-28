@@ -7,7 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Login({ status, canResetPassword }) {
+export default function LoginOrganizacao({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -22,21 +22,8 @@ export default function Login({ status, canResetPassword }) {
 
     const submit = (e) => {
         e.preventDefault();
-<<<<<<< HEAD
 
-        post(route('login'));
-=======
-    
-        // Captura o token CSRF do meta tag no HTML
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
-        // Inclui o token CSRF no cabeçalho da requisição
-        post(route('login.isso'), {
-            headers: {
-                'X-CSRF-TOKEN': csrfToken, // Adiciona o token aqui
-            },
-        });
->>>>>>> teste
+        post(route('login.org'));
     };
 
     return (
@@ -46,6 +33,7 @@ export default function Login({ status, canResetPassword }) {
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
             <form onSubmit={submit}>
+                <h1 className='text-2xl font-bold text-gray-800 text-center mb-6'>Entre na Organização </h1>
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
