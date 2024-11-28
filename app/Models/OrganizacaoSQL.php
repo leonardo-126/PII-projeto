@@ -33,6 +33,10 @@ class OrganizacaoSQL extends Model implements AuthenticatableContract
     {  
         return $this->hasMany(OrganizacaoTelefone::class);  
     }  
+    public function Enderecos():HasMany
+    {
+        return $this->hasMany(organizacaoEndereco::class);
+    }
 
     /**  
      * The attributes that should be hidden for serialization.  

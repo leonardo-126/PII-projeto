@@ -9,7 +9,7 @@ use Vinelab\NeoEloquent\Eloquent\Model as NeoEloquent;
 class TelefoneOrganizacao extends NeoEloquent
 {
     //
-    protected $connection = 'neo4j';
+
 
     protected $connection = 'neo4j';
     protected $label = 'TelefoneOrganizacao';  

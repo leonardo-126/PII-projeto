@@ -74,33 +74,7 @@ export default function Denuncias() {
       );
       setDenunciasFilter(filteredData);
   };
-  useEffect(() => {
-    // Função para pegar os dados do backend
-    const fetchDenuncias = async () => {
-      try {
-        const response = await fetch("URL_DO_BACKEND_AQUI"); // Substitua pela URL do seu backend
-        if (!response.ok) {
-          throw new Error("Erro ao carregar os dados.");
-        }
-        const data = await response.json();
-        setDenuncias(data); // Atualiza o estado com os dados recebidos
-      } catch (err) {
-        setError(err.message); // Se houver um erro, atualiza o estado de erro
-      } finally {
-        setLoading(false); // Finaliza o estado de carregamento
-      }
-    };
-
-    fetchDenuncias(); // Chama a função para pegar os dados
-  }, []); // O array vazio [] garante que a requisição só aconteça uma vez após o componente ser montado
-
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
-
-  if (error) {
-    return <div>Erro: {error}</div>;
-  }
+  
     return (
         <section className="denuncias">
             <a href="/RegisterOrganizacao" className="text-blue-500 underline hover:text-blue-700">

@@ -1,15 +1,21 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterOrganization;
+use App\Http\Controllers\Organization\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    $user = User::all();
-    return Inertia::render('Dashboard');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 Route::middleware(['auth:users'])->group(function(){
 
@@ -37,6 +43,10 @@ Route::get('/LoginOrganizacao', function () { //teste
 Route::get('/DenunciarIncidente', function () { //teste
     return Inertia::render('DenunciarIncidente');
 })->name('DenunciarIncidente');
+
+//json organ
+
+Route::get('/organizacaojson/list', [OrganizationController::class,'organizationJson'])->name('organizacao.json');
 
 
 
